@@ -1,0 +1,23 @@
+
+{% comment %}
+TODO - > sitewide links for credits, donations, source? and donate.
+TODO GET THESE FROM CONFIG.
+{% endcomment %}
+
+<footer>
+    <p>Version {{ version }}</p>
+    <p>Powered by JohnRippers addiction to energy drinks.</p>
+    <p>Github Sourcecode</p>
+
+
+    <p>Donate: </p>
+    {% if BANANO_ADDRESS %}
+        <p>        Banano Address: {{ BANANO_ADDRESS }}</p>
+    {% endif %}
+    {% if NANO_ADDRESS %}
+        <p>        {{ NANO_SYMBOL_TEXT }} Nano (XNO) Address: {{ NANO_ADDRESS }}</p>
+    {% endif %}
+    {% if KOFI_ADDRESS %}
+        <p>        kofi Address: {{ KOFI_ADDRESS }}</p>
+    {% endif %}
+</footer>

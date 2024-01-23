@@ -1,0 +1,154 @@
+{% extends 'monitor/base/base.html' %}
+{% comment %}
+A template for creating new pages quickly and easily.
+Only optional blocks included, refer below for base block replacements.
+
+WARNING Overriding these blocks will remove base template settings.
+['head' , 'body', 'navigation', 'footer', 'title']
+
+
+
+{% endcomment %}
+
+{% block title %}
+    {{ DEFAULT_TAB_TITLE }}
+{% endblock title %}
+
+{% block head_extras %}
+
+{% endblock head_extras %}
+
+{% block content %}
+G asfdfsdf    <div id="monkey" hx-get="https://monkey.banano.cc/api/v1/monkey/ban_3pjf6h7o38oi7em7o4615n484xzyc1eat5qsiygtz6oentpoansq1keyrkcx" hx-swap="innerHTML" hx-trigger="load">
+
+                    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-9">
+                <section class="hero  welcome is-small">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title">
+                                {{ DEFAULT_TITLE }}
+                            </h1>
+                            <h2 class="subtitle">
+                                {{ DEFAULT_SUBTITLE }}
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+                <section class="info-tiles">
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent " id="Network-Telemetry" hx-get="{% url 'partial_telemetry' %}"
+                             hx-trigger="load, every {{ REFRESH_TIMER }}s" hx-swap="innerHTML">
+                            >
+                            {% include 'monitor/partials/network_status_row/telemetry.html' %}
+
+                        </div>
+
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title">Node Information</p>
+
+                                <table class="table">
+
+                                    <tbody>
+
+
+                                    <tr id="BlockCount" hx-get="{% url 'partial_block_count' %}"
+                                        hx-trigger="load, every {{ REFRESH_TIMER }}s" hx-swap="outerHTML">
+                                    </tr>
+                                    <tr id="Uptime" hx-get="{% url 'partial_uptime' %}"
+                                        hx-trigger="load, every {{ REFRESH_TIMER }}s" hx-swap="innerHTML">
+                                        {% include 'monitor/partials/node_status_row/uptime.html' %}
+                                    </tr>
+                                    <tr>
+                                        <th> Syncronization</th>
+                                        <td><p>
+                                            {% if sync_percent %}{{ sync_percent }}%{% endif %}
+                                            {% if sync_estimated_time %}{{ sync_estimated_time }}{% endif %}
+                                        </p></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+
+                <div class="columns">
+                    <div class="column is-6">
+                        <div class="card events-card">
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    Last block processed
+                                </p>
+                                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                                </a>
+                            </header>
+                            <div class="card-table">
+                                <div class="content">
+                                    <table class="table is-fullwidth is-striped">
+                                        <tbody>
+
+                                        {% for transaction in latest_transactions %}
+                                            <tr>
+                                                <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                                <td>Lorum ipsum dolem aire</td>
+                                                <td class="level-right"><a class="button is-small is-primary" href="#">Action</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                {% comment %}
+                                TODO redirect to BLOCK CHAIN EXPLORER WITH FILTERED RESULTS FOR LATEST TRANSACTIONS.
+                                {% endcomment %}
+                                <a href="#" class="card-footer-item">View All</a>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    Search Transaction
+                                </p>
+                                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                                </a>
+                            </header>
+                            <div class="card-content">
+                                <div class="content">
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input class="input is-large" type="text" placeholder="">
+                                        <span class="icon is-medium is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                                        <span class="icon is-medium is-right">
+                      <i class="fa fa-check"></i>
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

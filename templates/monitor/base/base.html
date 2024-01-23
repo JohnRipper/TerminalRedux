@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+{% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} {{ DEFAULT_TITLE }} {% endblock title %}</title>
+
+
+    {% comment %}
+    	Favicons.
+    {% endcomment %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'monitor/imgs/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'monitor/imgs/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'monitor/imgs/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'monitor/imgs/favicon/site.webmanifest' %}">
+
+    {% comment %}
+    TODO REPLACE WITH SELF HOSTED CDN.
+
+
+    TODO: CREATE MULTIPLE BULMA THEMES
+    TODO: concept -> compile multiple css files per theme, use global theme variable to decide which to load in from base.
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+
+    TODO: font awesome is too fat, make accoutn for site and only load in what I need.
+    {% endcomment %}
+
+    <link rel="stylesheet" href="{% static 'monitor/css/bulma/css/bulma_generated.css' %}">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+    {% block head_extras %}
+
+
+    {% endblock head_extras %}
+
+{% endblock head %}
+</head>
+
+<body class="has-background-black">
+
+{% block navigation %}
+    {% include 'monitor/includes/menu.html' %}
+{% endblock navigation %}
+
+
+{% block content %}
+
+
+{%  endblock content %}
+
+
+
+{% include 'monitor/includes/footer.html' %}
+
+
+{% block base_scripts %}
+    {%  comment %}
+    TODO NEED FUNCTIONALITY FOR MENU expansion, ADD LATER.
+    <script async type="text/javascript" src="../js/bulma.js"></script>
+    {% endcomment %}
+      <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+{% endblock base_scripts %}
+
+</body>
+
+</html>

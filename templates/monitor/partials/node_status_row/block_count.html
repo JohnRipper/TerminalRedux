@@ -1,0 +1,17 @@
+<tr>
+    <th>Block Count</th>
+    <td><p>{% if node_block_count.count %}{{ node_block_count.count }}{% else %}
+        Error!{% endif %}</p></td>
+</tr>
+<tr>
+    <th>Unchecked Blocks</th>
+    <td><p>{% if node_block_count.unchecked %}
+        {{ node_block_count.unchecked }}{% else %}
+        Error!{% endif %}</p></td>
+</tr>
+<tr>
+    <th>Cemented Blocks</th>
+    <td><p>
+        {% if node_block_count.cemented %}{{ node_block_count.cemented }}{% else %}
+            Error!{% endif %}</p></td>
+</tr>

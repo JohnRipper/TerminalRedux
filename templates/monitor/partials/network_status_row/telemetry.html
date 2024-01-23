@@ -1,0 +1,55 @@
+
+<article class="tile is-child box ">
+    <p class="title">Network Information</p>
+    <table class="table">
+
+        <tbody>
+        <tr>
+            <th>Peers</th>
+            <td><p>{% if telemetry.peer_count %}{{ telemetry.peer_count }}{% else %}
+                {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Total Blocks</th>
+            <td><p>{% if telemetry.block_count %}{{ telemetry.block_count }}{% else %}
+                {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Unchecked Blocks</th>
+            <td><p>
+                {% if telemetry.unchecked_count %}{{ telemetry.unchecked_count }}{% else %}
+                    {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Cemented Blocks</th>
+            <td><p>
+                {% if telemetry.cemented_count %}{{ telemetry.cemented_count }}{% else %}
+                    {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Accounts</th>
+            <td><p>
+                {% if telemetry.account_count %}{{ telemetry.account_count }}{% else %}
+                    {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Bandwidth Cap</th>
+            <td><p>
+                {% if telemetry.bandwidth_cap %}{{ telemetry.bandwidth_cap }}{% else %}
+                    {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Uptime</th>
+            <td><p>
+                {% if telemetry.uptime %}{{ telemetry.uptime }}{% else %}
+                    {% endif %}</p></td>
+        </tr>
+        <tr>
+            <th>Available supply</th>
+            <td><p>
+                {% if network_available_supply %}{{ network_available_supply }}{% else %}
+                    {% endif %}</p></td>
+        </tr>
+        </tbody>
+    </table>
+</article>
